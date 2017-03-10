@@ -1,6 +1,6 @@
-buildscript {      // Configuration for building
+buildscript {
     repositories {
-        jcenter()      // Bintray's repository - a fast Maven Central mirror & more
+        jcenter()
         mavenCentral()
     }
     dependencies {
@@ -9,20 +9,17 @@ buildscript {      // Configuration for building
     }
 }
 
-repositories {   // repositories for JARs you access in your code
+repositories {
     maven {
-        url 'https://maven-central.storage.googleapis.com'             // Google's mirror of Maven Central
+        url 'https://maven-central.storage.googleapis.com'
     }
-
-//maven {
-//  url 'https://oss.sonatype.org/content/repositories/snapshots' // SNAPSHOT repository if needed
-//}
 
     jcenter()
     mavenCentral()
 }
 
 apply plugin: 'java'
+apply plugin: 'groovy'
 apply plugin: 'war'
 apply plugin: 'org.akhikhl.gretty'
 apply plugin: 'com.google.cloud.tools.appengine'
@@ -30,8 +27,17 @@ apply plugin: 'com.google.cloud.tools.appengine'
 dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
     providedCompile 'com.google.appengine:appengine:+'
-// Add your dependencies here.
+    compile 'org.codehaus.groovy:groovy-all:2.4.9'
+    compile "org.gebish:geb-core:1.1.1"
+    compile "org.seleniumhq.selenium:selenium-firefox-driver:2.52.0"
+    compile "org.seleniumhq.selenium:selenium-support:2.52.0"
+}
 
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDirs = ["src/main/java", "src/main/groovy"] }
+    }
 }
 
 gretty {
