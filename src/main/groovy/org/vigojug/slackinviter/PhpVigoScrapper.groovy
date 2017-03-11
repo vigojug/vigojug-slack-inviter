@@ -1,12 +1,16 @@
 package org.vigojug.slackinviter
 
+//import geb.Browser
+
 class PhpVigoScrapper {
     public static String slackInvite(email) {
 
-        geb.Browser.drive {
+/*        def browser = new Browser()
+
+        browser.drive {
             go "http://phpvigo.com"
             println title
-        }
-        return "TODO"
+        }*/
+        return "TODO: " + email
     }
 }
